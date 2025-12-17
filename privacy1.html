@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tietosuojakäytäntö - Screen Night Mode</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #E53935;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+        p {
+            margin: 15px 0;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        strong {
+            color: #2c3e50;
+        }
+        .updated {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .contact {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .language-switcher select {
+            padding: 8px 12px;
+            border: 2px solid #E53935;
+            border-radius: 5px;
+            background-color: white;
+            color: #2c3e50;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .language-switcher select:hover {
+            background-color: #E53935;
+            color: white;
+        }
+        .language-switcher select:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(229, 57, 53, 0.5);
+        }
+        @media (max-width: 600px) {
+            .language-switcher {
+                position: static;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <select id="languageSelect" onchange="changeLanguage(this.value)">
+            <option value="fi">🇫🇮 Suomi</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="sv">🇸🇪 Svenska</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="fr">🇫🇷 Français</option>
+        </select>
+    </div>
+    
+    <div class="container">
+        <h1 id="title">Tietosuojakäytäntö (Privacy Policy)</h1>
+        
+        <p class="updated"><strong>Viimeksi päivitetty: 17.12.2025</strong></p>
+        
+        <p>Tämä tietosuojakäytäntö koskee "Screen Night Mode" -sovellusta.</p>
+        
+        <h2>1. Tietojen kerääminen ja yksityisyys</h2>
+        
+        <p><strong>Emme kerää henkilötietoja.</strong> Sovellus on suunniteltu toimimaan täysin ilman käyttäjän tunnistamista. Emme kerää, tallenna tai jaa mitään henkilökohtaisia tietojasi (kuten nimi, sähköpostiosoite, puhelinnumero tai sijaintitiedot). Sovelluksen käyttö ei vaadi rekisteröitymistä tai käyttäjätilin luomista.</p>
+        
+        <h2>2. Sovelluksen tekninen toiminta</h2>
+        
+        <p>Sovellus toimii itsenäisesti käyttäjän laitteella hyödyntäen seuraavia periaatteita:</p>
+        
+        <ul>
+            <li><strong>Paikallinen toiminta:</strong> Sovellus ei käytä internetyhteyttä eikä lähetä mitään tietoja ulkoisille palvelimille. Kaikki toiminta tapahtuu paikallisesti laitteellasi.</li>
+            <li><strong>Paikallinen tallennus:</strong> Kaikki käyttäjän tekemät asetukset – kuten kirkkausasetus, Eye Saver -tila ja widgetin asetukset – tallennetaan ainoastaan paikallisesti käyttäjän puhelimen muistiin. Nämä tiedot pysyvät vain sinun laitteellasi.</li>
+            <li><strong>Näytön päällyskerros:</strong> Sovellus luo läpinäkyvän kerroksen näytön päälle himmentääkseen näyttöä. Tämä kerros ei tallenna tai seuraa mitään näytölläsi näkyvää sisältöä.</li>
+        </ul>
+        
+        <h2>3. Sovelluksen luvat</h2>
+        
+        <p>Sovellus pyytää vain välttämättömät luvat toimiakseen:</p>
+        
+        <ul>
+            <li><strong>SYSTEM_ALERT_WINDOW (Näytön päällä piirtäminen):</strong> Tarvitaan himmenysfiltterin näyttämiseksi muiden sovellusten päällä. Ilman tätä lupaa sovellus ei voi toimia.</li>
+            <li><strong>WRITE_SETTINGS (Järjestelmäasetusten muuttaminen):</strong> Tarvitaan puhelimen kirkkauden säätämiseen. Sovellus säätää järjestelmän kirkkautta ennen filtterin käyttöönottoa optimaalisen himmennyksen saavuttamiseksi.</li>
+            <li><strong>VIBRATE (Värinä):</strong> Käytetään haptisen palautteen antamiseen widgetin nappeja painettaessa.</li>
+            <li><strong>FOREGROUND_SERVICE:</strong> Tarvitaan filtterin pitämiseksi päällä taustalla sovelluksen ollessa suljettuna.</li>
+        </ul>
+        
+        <h2>4. Tietoturva</h2>
+        
+        <p>Koska emme kerää henkilötietoja emmekä käytä internetyhteyttä, tietosi ovat täysin turvassa omalla laitteellasi. Sovellus ei kommunikoi minkään ulkoisen palvelimen kanssa.</p>
+        
+        <h2>5. Muutokset tähän tietosuojakäytäntöön</h2>
+        
+        <p>Saatamme päivittää tietosuojakäytäntöämme ajoittain sovelluksen kehittyessä. Suosittelemme käymään tällä sivulla säännöllisesti pysyäksesi ajan tasalla mahdollisista muutoksista.</p>
+        
+        <h2>6. Ota yhteyttä</h2>
+        
+        <div class="contact">
+            <p id="contact-text">Jos sinulla on kysymyksiä tai huolenaiheita tästä tietosuojakäytännöstä, otathan rohkeasti yhteyttä sähköpostitse:<br>
+            <strong>sovelluksenkehittaja@gmail.com</strong></p>
+        </div>
+    </div>
+    
+    <script>
+        const translations = {
+            fi: {
+                title: "Tietosuojakäytäntö (Privacy Policy)",
+                updated: "Viimeksi päivitetty: 17.12.2025",
+                intro: "Tämä tietosuojakäytäntö koskee \"Screen Night Mode\" -sovellusta.",
+                h1: "1. Tietojen kerääminen ja yksityisyys",
+                p1: "<strong>Emme kerää henkilötietoja.</strong> Sovellus on suunniteltu toimimaan täysin ilman käyttäjän tunnistamista. Emme kerää, tallenna tai jaa mitään henkilökohtaisia tietojasi (kuten nimi, sähköpostiosoite, puhelinnumero tai sijaintitiedot). Sovelluksen käyttö ei vaadi rekisteröitymistä tai käyttäjätilin luomista.",
+                h2: "2. Sovelluksen tekninen toiminta",
+                p2: "Sovellus toimii itsenäisesti käyttäjän laitteella hyödyntäen seuraavia periaatteita:",
+                li1: "<strong>Paikallinen toiminta:</strong> Sovellus ei käytä internetyhteyttä eikä lähetä mitään tietoja ulkoisille palvelimille. Kaikki toiminta tapahtuu paikallisesti laitteellasi.",
+                li2: "<strong>Paikallinen tallennus:</strong> Kaikki käyttäjän tekemät asetukset – kuten kirkkausasetus, Eye Saver -tila ja widgetin asetukset – tallennetaan ainoastaan paikallisesti käyttäjän puhelimen muistiin. Nämä tiedot pysyvät vain sinun laitteellasi.",
+                li3: "<strong>Näytön päällyskerros:</strong> Sovellus luo läpinäkyvän kerroksen näytön päälle himmentääkseen näyttöä. Tämä kerros ei tallenna tai seuraa mitään näytölläsi näkyvää sisältöä.",
+                h3: "3. Sovelluksen luvat",
+                p3: "Sovellus pyytää vain välttämättömät luvat toimiakseen:",
+                li4: "<strong>SYSTEM_ALERT_WINDOW (Näytön päällä piirtäminen):</strong> Tarvitaan himmenysfiltterin näyttämiseksi muiden sovellusten päällä. Ilman tätä lupaa sovellus ei voi toimia.",
+                li5: "<strong>WRITE_SETTINGS (Järjestelmäasetusten muuttaminen):</strong> Tarvitaan puhelimen kirkkauden säätämiseen. Sovellus säätää järjestelmän kirkkautta ennen filtterin käyttöönottoa optimaalisen himmennyksen saavuttamiseksi.",
+                li6: "<strong>VIBRATE (Värinä):</strong> Käytetään haptisen palautteen antamiseen widgetin nappeja painettaessa.",
+                li7: "<strong>FOREGROUND_SERVICE:</strong> Tarvitaan filtterin pitämiseksi päällä taustalla sovelluksen ollessa suljettuna.",
+                h4: "4. Tietoturva",
+                p4: "Koska emme kerää henkilötietoja emmekä käytä internetyhteyttä, tietosi ovat täysin turvassa omalla laitteellasi. Sovellus ei kommunikoi minkään ulkoisen palvelimen kanssa.",
+                h5: "5. Muutokset tähän tietosuojakäytäntöön",
+                p5: "Saatamme päivittää tietosuojakäytäntöämme ajoittain sovelluksen kehittyessä. Suosittelemme käymään tällä sivulla säännöllisesti pysyäksesi ajan tasalla mahdollisista muutoksista.",
+                h6: "6. Ota yhteyttä",
+                contact: "Jos sinulla on kysymyksiä tai huolenaiheita tästä tietosuojakäytännöstä, otathan rohkeasti yhteyttä sähköpostitse:<br><strong>sovelluksenkehittaja@gmail.com</strong>"
+            },
+            en: {
+                title: "Privacy Policy",
+                updated: "Last updated: December 17, 2025",
+                intro: "This privacy policy applies to the \"Screen Night Mode\" application.",
+                h1: "1. Data Collection and Privacy",
+                p1: "<strong>We do not collect personal data.</strong> The app is designed to work completely without user identification. We do not collect, store, or share any of your personal information (such as name, email address, phone number, or location data). Using the app does not require registration or creating a user account.",
+                h2: "2. Technical Operation of the App",
+                p2: "The app operates independently on the user's device using the following principles:",
+                li1: "<strong>Local operation:</strong> The app does not use an internet connection and does not send any data to external servers. All operations happen locally on your device.",
+                li2: "<strong>Local storage:</strong> All user-made settings – such as brightness setting, Eye Saver mode, and widget settings – are stored only locally in the user's phone memory. This data stays only on your device.",
+                li3: "<strong>Screen overlay:</strong> The app creates a transparent layer on top of the screen to dim the display. This layer does not record or track any content visible on your screen.",
+                h3: "3. App Permissions",
+                p3: "The app requests only the necessary permissions to function:",
+                li4: "<strong>SYSTEM_ALERT_WINDOW (Display over other apps):</strong> Required to show the dimming filter on top of other apps. Without this permission, the app cannot function.",
+                li5: "<strong>WRITE_SETTINGS (Modify system settings):</strong> Required to adjust the phone's brightness. The app adjusts system brightness before applying the filter for optimal dimming.",
+                li6: "<strong>VIBRATE:</strong> Used to provide haptic feedback when pressing widget buttons.",
+                li7: "<strong>FOREGROUND_SERVICE:</strong> Required to keep the filter active in the background when the app is closed.",
+                h4: "4. Security",
+                p4: "Since we do not collect personal data or use an internet connection, your data is completely safe on your own device. The app does not communicate with any external servers.",
+                h5: "5. Changes to This Privacy Policy",
+                p5: "We may update our privacy policy from time to time as the app evolves. We recommend visiting this page regularly to stay informed about any changes.",
+                h6: "6. Contact Us",
+                contact: "If you have any questions or concerns about this privacy policy, please feel free to contact us via email:<br><strong>sovelluksenkehittaja@gmail.com</strong>"
+            },
+            sv: {
+                title: "Integritetspolicy",
+                updated: "Senast uppdaterad: 17.12.2025",
+                intro: "Denna integritetspolicy gäller applikationen \"Screen Night Mode\".",
+                h1: "1. Datainsamling och integritet",
+                p1: "<strong>Vi samlar inte in personuppgifter.</strong> Appen är designad att fungera helt utan användaridentifiering. Vi samlar inte in, lagrar eller delar någon av dina personliga uppgifter (såsom namn, e-postadress, telefonnummer eller platsdata). Att använda appen kräver inte registrering eller att skapa ett användarkonto.",
+                h2: "2. Appens tekniska drift",
+                p2: "Appen fungerar självständigt på användarens enhet med följande principer:",
+                li1: "<strong>Lokal drift:</strong> Appen använder inte en internetanslutning och skickar inte några data till externa servrar. All drift sker lokalt på din enhet.",
+                li2: "<strong>Lokal lagring:</strong> Alla användarinställningar – såsom ljusstyrka, Eye Saver-läge och widgetinställningar – lagras endast lokalt i användarens telefonminne. Dessa data stannar endast på din enhet.",
+                li3: "<strong>Skärmöverlägg:</strong> Appen skapar ett transparent lager ovanpå skärmen för att dämpa displayen. Detta lager spelar inte in eller spårar något innehåll som visas på din skärm.",
+                h3: "3. Appbehörigheter",
+                p3: "Appen begär endast nödvändiga behörigheter för att fungera:",
+                li4: "<strong>SYSTEM_ALERT_WINDOW (Visa över andra appar):</strong> Krävs för att visa dämpningsfiltret ovanpå andra appar. Utan denna behörighet kan appen inte fungera.",
+                li5: "<strong>WRITE_SETTINGS (Ändra systeminställningar):</strong> Krävs för att justera telefonens ljusstyrka. Appen justerar systemljusstyrkan innan filtret appliceras för optimal dämpning.",
+                li6: "<strong>VIBRATE:</strong> Används för att ge haptisk feedback när man trycker på widgetknappar.",
+                li7: "<strong>FOREGROUND_SERVICE:</strong> Krävs för att hålla filtret aktivt i bakgrunden när appen är stängd.",
+                h4: "4. Säkerhet",
+                p4: "Eftersom vi inte samlar in personuppgifter eller använder en internetanslutning är dina data helt säkra på din egen enhet. Appen kommunicerar inte med några externa servrar.",
+                h5: "5. Ändringar av denna integritetspolicy",
+                p5: "Vi kan uppdatera vår integritetspolicy då och då när appen utvecklas. Vi rekommenderar att du besöker denna sida regelbundet för att hålla dig informerad om eventuella ändringar.",
+                h6: "6. Kontakta oss",
+                contact: "Om du har några frågor eller funderingar om denna integritetspolicy, kontakta oss gärna via e-post:<br><strong>sovelluksenkehittaja@gmail.com</strong>"
+            },
+            de: {
+                title: "Datenschutzerklärung",
+                updated: "Zuletzt aktualisiert: 17.12.2025",
+                intro: "Diese Datenschutzerklärung gilt für die Anwendung \"Screen Night Mode\".",
+                h1: "1. Datenerfassung und Datenschutz",
+                p1: "<strong>Wir erfassen keine personenbezogenen Daten.</strong> Die App ist so konzipiert, dass sie vollständig ohne Benutzeridentifikation funktioniert. Wir erfassen, speichern oder teilen keine Ihrer persönlichen Daten (wie Name, E-Mail-Adresse, Telefonnummer oder Standortdaten). Die Nutzung der App erfordert keine Registrierung oder Erstellung eines Benutzerkontos.",
+                h2: "2. Technischer Betrieb der App",
+                p2: "Die App funktioniert unabhängig auf dem Gerät des Benutzers nach folgenden Prinzipien:",
+                li1: "<strong>Lokaler Betrieb:</strong> Die App verwendet keine Internetverbindung und sendet keine Daten an externe Server. Alle Operationen finden lokal auf Ihrem Gerät statt.",
+                li2: "<strong>Lokale Speicherung:</strong> Alle vom Benutzer vorgenommenen Einstellungen – wie Helligkeitseinstellung, Eye Saver-Modus und Widget-Einstellungen – werden nur lokal im Telefonspeicher des Benutzers gespeichert. Diese Daten bleiben nur auf Ihrem Gerät.",
+                li3: "<strong>Bildschirmüberlagerung:</strong> Die App erstellt eine transparente Schicht über dem Bildschirm, um das Display zu dimmen. Diese Schicht zeichnet keine auf Ihrem Bildschirm sichtbaren Inhalte auf oder verfolgt sie.",
+                h3: "3. App-Berechtigungen",
+                p3: "Die App fordert nur die notwendigen Berechtigungen zum Funktionieren an:",
+                li4: "<strong>SYSTEM_ALERT_WINDOW (Über anderen Apps anzeigen):</strong> Erforderlich, um den Dimmfilter über anderen Apps anzuzeigen. Ohne diese Berechtigung kann die App nicht funktionieren.",
+                li5: "<strong>WRITE_SETTINGS (Systemeinstellungen ändern):</strong> Erforderlich, um die Helligkeit des Telefons anzupassen. Die App passt die Systemhelligkeit vor dem Anwenden des Filters für optimales Dimmen an.",
+                li6: "<strong>VIBRATE:</strong> Wird verwendet, um haptisches Feedback beim Drücken von Widget-Tasten zu geben.",
+                li7: "<strong>FOREGROUND_SERVICE:</strong> Erforderlich, um den Filter im Hintergrund aktiv zu halten, wenn die App geschlossen ist.",
+                h4: "4. Sicherheit",
+                p4: "Da wir keine personenbezogenen Daten erfassen oder eine Internetverbindung verwenden, sind Ihre Daten auf Ihrem eigenen Gerät vollständig sicher. Die App kommuniziert nicht mit externen Servern.",
+                h5: "5. Änderungen dieser Datenschutzerklärung",
+                p5: "Wir können unsere Datenschutzerklärung von Zeit zu Zeit aktualisieren, wenn sich die App weiterentwickelt. Wir empfehlen, diese Seite regelmäßig zu besuchen, um über etwaige Änderungen informiert zu bleiben.",
+                h6: "6. Kontaktieren Sie uns",
+                contact: "Wenn Sie Fragen oder Bedenken zu dieser Datenschutzerklärung haben, kontaktieren Sie uns bitte per E-Mail:<br><strong>sovelluksenkehittaja@gmail.com</strong>"
+            },
+            es: {
+                title: "Política de Privacidad",
+                updated: "Última actualización: 17.12.2025",
+                intro: "Esta política de privacidad se aplica a la aplicación \"Screen Night Mode\".",
+                h1: "1. Recopilación de datos y privacidad",
+                p1: "<strong>No recopilamos datos personales.</strong> La aplicación está diseñada para funcionar completamente sin identificación del usuario. No recopilamos, almacenamos ni compartimos ninguna de su información personal (como nombre, dirección de correo electrónico, número de teléfono o datos de ubicación). El uso de la aplicación no requiere registro ni crear una cuenta de usuario.",
+                h2: "2. Funcionamiento técnico de la aplicación",
+                p2: "La aplicación funciona de forma independiente en el dispositivo del usuario siguiendo estos principios:",
+                li1: "<strong>Operación local:</strong> La aplicación no utiliza conexión a Internet y no envía datos a servidores externos. Todas las operaciones ocurren localmente en su dispositivo.",
+                li2: "<strong>Almacenamiento local:</strong> Todas las configuraciones realizadas por el usuario – como configuración de brillo, modo Eye Saver y configuraciones del widget – se almacenan solo localmente en la memoria del teléfono del usuario. Estos datos permanecen solo en su dispositivo.",
+                li3: "<strong>Superposición de pantalla:</strong> La aplicación crea una capa transparente sobre la pantalla para atenuar la visualización. Esta capa no graba ni rastrea ningún contenido visible en su pantalla.",
+                h3: "3. Permisos de la aplicación",
+                p3: "La aplicación solicita solo los permisos necesarios para funcionar:",
+                li4: "<strong>SYSTEM_ALERT_WINDOW (Mostrar sobre otras aplicaciones):</strong> Requerido para mostrar el filtro de atenuación sobre otras aplicaciones. Sin este permiso, la aplicación no puede funcionar.",
+                li5: "<strong>WRITE_SETTINGS (Modificar configuración del sistema):</strong> Requerido para ajustar el brillo del teléfono. La aplicación ajusta el brillo del sistema antes de aplicar el filtro para una atenuación óptima.",
+                li6: "<strong>VIBRATE:</strong> Se utiliza para proporcionar retroalimentación háptica al presionar los botones del widget.",
+                li7: "<strong>FOREGROUND_SERVICE:</strong> Requerido para mantener el filtro activo en segundo plano cuando la aplicación está cerrada.",
+                h4: "4. Seguridad",
+                p4: "Como no recopilamos datos personales ni usamos conexión a Internet, sus datos están completamente seguros en su propio dispositivo. La aplicación no se comunica con ningún servidor externo.",
+                h5: "5. Cambios a esta política de privacidad",
+                p5: "Podemos actualizar nuestra política de privacidad de vez en cuando a medida que evoluciona la aplicación. Recomendamos visitar esta página regularmente para mantenerse informado sobre cualquier cambio.",
+                h6: "6. Contáctenos",
+                contact: "Si tiene alguna pregunta o inquietud sobre esta política de privacidad, no dude en contactarnos por correo electrónico:<br><strong>sovelluksenkehittaja@gmail.com</strong>"
+            },
+            fr: {
+                title: "Politique de Confidentialité",
+                updated: "Dernière mise à jour : 17.12.2025",
+                intro: "Cette politique de confidentialité s'applique à l'application \"Screen Night Mode\".",
+                h1: "1. Collecte de données et confidentialité",
+                p1: "<strong>Nous ne collectons pas de données personnelles.</strong> L'application est conçue pour fonctionner complètement sans identification de l'utilisateur. Nous ne collectons, ne stockons ni ne partageons aucune de vos informations personnelles (telles que nom, adresse e-mail, numéro de téléphone ou données de localisation). L'utilisation de l'application ne nécessite pas d'inscription ni de création de compte utilisateur.",
+                h2: "2. Fonctionnement technique de l'application",
+                p2: "L'application fonctionne indépendamment sur l'appareil de l'utilisateur selon les principes suivants :",
+                li1: "<strong>Fonctionnement local :</strong> L'application n'utilise pas de connexion Internet et n'envoie aucune donnée à des serveurs externes. Toutes les opérations se déroulent localement sur votre appareil.",
+                li2: "<strong>Stockage local :</strong> Tous les paramètres effectués par l'utilisateur – tels que le réglage de la luminosité, le mode Eye Saver et les paramètres du widget – sont stockés uniquement localement dans la mémoire du téléphone de l'utilisateur. Ces données restent uniquement sur votre appareil.",
+                li3: "<strong>Superposition d'écran :</strong> L'application crée une couche transparente au-dessus de l'écran pour atténuer l'affichage. Cette couche n'enregistre ni ne suit aucun contenu visible sur votre écran.",
+                h3: "3. Autorisations de l'application",
+                p3: "L'application demande uniquement les autorisations nécessaires pour fonctionner :",
+                li4: "<strong>SYSTEM_ALERT_WINDOW (Afficher par-dessus d'autres applications) :</strong> Requis pour afficher le filtre d'atténuation par-dessus d'autres applications. Sans cette autorisation, l'application ne peut pas fonctionner.",
+                li5: "<strong>WRITE_SETTINGS (Modifier les paramètres système) :</strong> Requis pour ajuster la luminosité du téléphone. L'application ajuste la luminosité du système avant d'appliquer le filtre pour une atténuation optimale.",
+                li6: "<strong>VIBRATE :</strong> Utilisé pour fournir un retour haptique lors de l'appui sur les boutons du widget.",
+                li7: "<strong>FOREGROUND_SERVICE :</strong> Requis pour maintenir le filtre actif en arrière-plan lorsque l'application est fermée.",
+                h4: "4. Sécurité",
+                p4: "Étant donné que nous ne collectons pas de données personnelles ni n'utilisons de connexion Internet, vos données sont entièrement en sécurité sur votre propre appareil. L'application ne communique avec aucun serveur externe.",
+                h5: "5. Modifications de cette politique de confidentialité",
+                p5: "Nous pouvons mettre à jour notre politique de confidentialité de temps en temps à mesure que l'application évolue. Nous vous recommandons de visiter cette page régulièrement pour rester informé de tout changement.",
+                h6: "6. Nous contacter",
+                contact: "Si vous avez des questions ou des préoccupations concernant cette politique de confidentialité, n'hésitez pas à nous contacter par e-mail :<br><strong>sovelluksenkehittaja@gmail.com</strong>"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const t = translations[lang];
+            document.getElementById('title').innerHTML = t.title;
+            document.querySelector('.updated').innerHTML = '<strong>' + t.updated + '</strong>';
+            document.querySelectorAll('p')[1].innerHTML = t.intro;
+            
+            const headings = document.querySelectorAll('h2');
+            headings[0].textContent = t.h1;
+            headings[1].textContent = t.h2;
+            headings[2].textContent = t.h3;
+            headings[3].textContent = t.h4;
+            headings[4].textContent = t.h5;
+            headings[5].textContent = t.h6;
+            
+            const paragraphs = document.querySelectorAll('.container > p');
+            paragraphs[2].innerHTML = t.p1;
+            paragraphs[3].innerHTML = t.p2;
+            paragraphs[4].innerHTML = t.p3;
+            paragraphs[5].innerHTML = t.p4;
+            paragraphs[6].innerHTML = t.p5;
+            
+            const lists = document.querySelectorAll('ul');
+            lists[0].children[0].innerHTML = t.li1;
+            lists[0].children[1].innerHTML = t.li2;
+            lists[0].children[2].innerHTML = t.li3;
+            lists[1].children[0].innerHTML = t.li4;
+            lists[1].children[1].innerHTML = t.li5;
+            lists[1].children[2].innerHTML = t.li6;
+            lists[1].children[3].innerHTML = t.li7;
+            
+            document.getElementById('contact-text').innerHTML = t.contact;
+            
+            // Save language preference
+            localStorage.setItem('privacyLang', lang);
+            document.documentElement.lang = lang;
+        }
+
+        // Load saved language on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('privacyLang') || 'fi';
+            document.getElementById('languageSelect').value = savedLang;
+            if (savedLang !== 'fi') {
+                changeLanguage(savedLang);
+            }
+        });
+    </script>
+</body>
+</html>
