@@ -1,0 +1,24 @@
+Tietosuojakäytäntö
+
+Viimeksi päivitetty: 8.3.2026
+
+Tämä sovellus kunnioittaa käyttäjän yksityisyyttä ja on suunniteltu keräämään mahdollisimman vähän tietoa.
+
+1. Kerättävät tiedot
+Sovellus ei kerää henkilötietoja, kuten nimeä, sähköpostiosoitetta, puhelinnumeroa, sijaintitietoja tai yhteystietoja.
+Sovellukseen lisätyt ostoslistatiedot tallennetaan käyttäjän omalle laitteelle.
+
+3. Tietojen jakaminen
+Sovellus ei myy, vuokraa tai luovuta tietoja kolmansille osapuolille.
+
+4. Tietojen säilytys ja poistaminen
+Tiedot säilyvät käyttäjän laitteella, kunnes käyttäjä poistaa ne sovelluksesta tai poistaa sovelluksen laitteeltaan.
+
+5. Tietoturva
+Sovellus on toteutettu turvallisuus edellä ja minimoi tietojen käsittelyn. Sovellus ei pyydä tarpeettomia käyttöoikeuksia.
+
+7. Muutokset tietosuojakäytäntöön
+Tätä tietosuojakäytäntöä voidaan päivittää tarvittaessa. Uusin versio julkaistaan tämän sivun kautta.
+
+8. Yhteystiedot
+Jos sinulla on kysyttävää tietosuojasta, ota yhteyttä: sovelluksenkehittaja@gmail.com
